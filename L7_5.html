@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Тюлячкина Мария</title>
+<style>
+  .block {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    opacity: 0.9;
+    cursor: pointer;
+  }
+  #block1 {
+    background-color: purple;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+  }
+  #block2 {
+    background-color: hotpink;
+    top: 80px;
+    left: 80px;
+    z-index: 2;
+  }
+  #block3 {
+    background-color: deepskyblue;
+    top: 140px;
+    left: 140px;
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+<div id="block1" class="block"></div>
+<div id="block2" class="block"></div>
+<div id="block3" class="block"></div>
+<script>
+  const blocks = document.querySelectorAll('.block');
+  let highestZIndex = 3; 
+  blocks.forEach(block => {
+    block.addEventListener('click', () => {
+      highestZIndex++;
+      block.style.zIndex = highestZIndex;
+    });
+  });
+</script>
+</body>
+</html>

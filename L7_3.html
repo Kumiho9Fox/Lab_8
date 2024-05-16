@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Тюлячкина Мария</title>
+<style>
+    ul, li {
+        list-style-type: none;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+<ul id="directoryTree">
+    <li><span>Рабочий стол</span>
+        <ul>
+            <li><span>Документы</span>
+                <ul>
+                    <li><span>Отчет.docx</span></li>
+                    <li><span>Презентация.pptx</span></li>
+                    <li><span>Домашка.docx</span></li>
+                </ul>
+            </li>
+            <li><span>Музыка</span>
+                <ul>
+                    <li><span>Butter.mp3</span></li>
+                    <li><span>Black_Swan.mp3</span></li>
+                    <li><span>Pink_Venom.mp3</span></li>
+                </ul>
+            </li>
+            <li><span>Изображения</span>
+                <ul>
+                    <li><span>Милые котики.jpeg</span></li>
+                    <li><span>"Мир Хаяо Миядзаки".png</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<script>
+    document.querySelectorAll("#directoryTree span").forEach(span => {
+        span.addEventListener('click', function() {
+            const childrenList = this.parentElement.querySelector("ul");
+            if (childrenList) {
+                childrenList.style.display = childrenList.style.display === 'none' ? 'block' : 'none';
+            }
+        });
+        span.addEventListener('mouseover', function() {
+            this.classList.add('bold');
+        });
+        span.addEventListener('mouseout', function() {
+            this.classList.remove('bold');
+        });
+    });
+</script>
+</body>
+</html>

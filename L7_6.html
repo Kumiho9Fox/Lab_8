@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Тюлячкина Мария</title>
+<style>
+  .orange {
+    color: orange;
+  }
+  .selected {
+    background-color: rgb(51, 170, 186);
+  }
+</style>
+</head>
+<body>
+<ul id="bookList">
+  <li>Гарри Поттер - Джоан Роулинг</li>
+  <li>Ким Ынсук - Гоблин</li>
+  <li>Рик Риордан - Перси Джексон</li>
+  <li>Хаяо Миядзаки - Унесённые призраками</li>
+  <li>Л.Н. Толстой - Война и миръ</li>
+</ul>
+<script>
+  const bookList = document.getElementById('bookList');
+  let lastClickedIndex = -1;
+  bookList.addEventListener('click', function(event) {
+    if (event.target.tagName === 'LI') {
+      const currentItem = event.target;
+      if (event.ctrlKey) {
+        currentItem.classList.toggle('selected');
+      } else if (event.shiftKey && lastClickedIndex !== -1) {
+        const currentIndex = Array.from(bookList.children).indexOf(currentItem);
+        const start = Math.min(lastClickedIndex, currentIndex);
+        const end = Math.max(lastClickedIndex, currentIndex);
+        for (let i = start; i <= end; i++) {
+          bookList.children[i].classList.add('selected');
+        }
+      } else {
+        if (currentItem.style.color === 'orange') {
+          currentItem.style.color = '';
+        } else {
+          currentItem.style.color = 'orange';
+        }
+      }
+      lastClickedIndex = Array.from(bookList.children).indexOf(currentItem);
+    }
+  });
+</script>
+</body>
+</html>

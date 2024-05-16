@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тюлячкина Мария</title>
+    <style>
+        a {
+            color: rgb(24, 3, 93); 
+            text-decoration: none; 
+        }
+        .external-link {
+            text-decoration: dashed underline; 
+        }
+        .local-link {
+            text-decoration: solid underline; 
+        }
+    </style>
+</head>
+<body>
+    <ul id="linkList">
+        <li><a href="https://www.yandex.ru">Яндекс</a></li>
+        <li><a href="https://www.google.com">Google</a></li>
+        <li><a href="https://www.learnprogramming.academy">Изучение программирования</a></li>
+        <li><a href="/local/docs/tutorial.html">Локальный учебный документ</a></li>
+        <li><a href="https://i.pinimg.com/originals/3e/c9/9b/3ec99b73efe5f0cf7cfb58b05c11a10c.jpg">Хомячок</a></li>
+    </ul>
+    <script>
+        document.querySelectorAll('#linkList a').forEach(link => {
+            if (link.href.startsWith('http://') || link.href.startsWith('https://')) {
+                link.classList.add('external-link');
+            } else {
+                link.classList.add('local-link');
+            }
+        });
+    </script>
+</body>
+</html>

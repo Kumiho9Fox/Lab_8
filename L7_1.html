@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тюлячкина Мария</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        class Радиоприемник {
+            constructor(питание, тип, выходнаяМощностьЗвука, типТюнера, модуляция) {
+                this.питание = питание;
+                this.тип = тип;
+                this.выходнаяМощностьЗвука = выходнаяМощностьЗвука;
+                this.типТюнера = типТюнера;
+                this.модуляция = модуляция;
+            }
+        }
+        class РасширенныйРадиоприемник extends Радиоприемник {
+            constructor(питание, тип, выходнаяМощностьЗвука, типТюнера, модуляция, датаВыходаНаРынок, стоимость) {
+                super(питание, тип, выходнаяМощностьЗвука, типТюнера, модуляция);
+                this.датаВыходаНаРынок = датаВыходаНаРынок;
+                this.стоимость = стоимость;
+            }
+        }
+        window.onload = function() {
+            const мойРасширенныйРадиоприемник = new РасширенныйРадиоприемник('Батареи', 'Портативный', '10 Вт', 'Цифровой', 'FM', '2023 год', '5000');
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+            const headers = Object.keys(мойРасширенныйРадиоприемник);
+            const headerRow = document.createElement('tr');
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            const dataRow = document.createElement('tr');
+            headers.forEach(header => {
+                const td = document.createElement('td');
+                td.textContent = мойРасширенныйРадиоприемник[header];
+                dataRow.appendChild(td);
+            });
+            tbody.appendChild(dataRow);
+            table.appendChild(tbody);
+            document.body.appendChild(table);
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
